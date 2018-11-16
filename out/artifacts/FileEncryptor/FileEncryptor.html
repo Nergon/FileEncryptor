@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <SCRIPT src="https://java.com/js/dtjava.js"></SCRIPT><script>
+    function launchApplication(jnlpfile) {
+        dtjava.launch(            {
+                url : 'FileEncryptor.jnlp'
+            },
+            {
+                javafx : '10.0.1+'
+            },
+            {}
+        );
+        return false;
+    }
+</script><script>
+    function javafxEmbedpw.nergon.fileencryptor() {
+        dtjava.embed(
+            {
+                id : 'pw.nergon.fileencryptor',
+                url : 'FileEncryptor.jnlp',
+                placeholder : 'javafx-app-placeholder',
+                width : '452',
+                height : '563'
+            },
+            {
+                javafx : '10.0.1+'
+            },
+            {}
+        );
+    }
+    
+            <!-- Embed FX application into web page once page is loaded -->
+    dtjava.addOnloadCallback(javafxEmbedpw.nergon.fileencryptor);
+</script>
+    </head>
+    <body>
+        <h2>
+            Test page for <b>Main</b>
+        </h2>
+        <b>Webstart:</b><a href="FileEncryptor.jnlp" onclick="return launchApplication('FileEncryptor.jnlp');">click to launch this app as webstart</a>
+        <br>
+        <hr>
+        <br>
+        
+        <!-- Applet will be inserted here -->
+        <div id="javafx-app-placeholder"></div>
+    </body>
+</html>

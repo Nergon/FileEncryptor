@@ -33,20 +33,21 @@ public class FileHandler {
     }
 
     private void processFile(int cipherMode, String outFile) {
-        try {
+        try (FileInputStream inputStream = new FileInputStream(file);
+             FileOutputStream outputStream = new FileOutputStream(new File(outFile))) {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
             byte[] hash = digest.digest(password.getBytes(StandardCharsets.UTF_8));
             Key secretKey = new SecretKeySpec(hash, "AES");
             Cipher cipher = Cipher.getInstance("AES");
             cipher.init(cipherMode, secretKey);
 
-            FileInputStream inputStream = new FileInputStream(file);
+
             byte[] inputBytes = new byte[(int) file.length()];
             inputStream.read(inputBytes);
 
             byte[] outputBytes = cipher.doFinal(inputBytes);
 
-            FileOutputStream outputStream = new FileOutputStream(new File(outFile));
+
             outputStream.write(outputBytes);
 
             outputStream.flush();
